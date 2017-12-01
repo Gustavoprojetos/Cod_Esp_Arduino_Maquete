@@ -1,0 +1,58 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ESP8266 e Arduino Exemplo de Controle de Pinos</title>
+  <style>
+<!-- edita o paragrafo -->
+  p {
+    color: red;
+    margin: 5px;
+    cursor: pointer;
+  }
+  p:hover {
+    background: yellow;
+  }
+  </style>
+  <script src="jquery-3.2.1.js"></script>
+</head>
+<body>
+
+	<center>
+		<!-- Titulos -->
+		<h1>Automacao ESP8266 e Arduino</h1>
+		<h2>Controle de Cargas</h2>
+
+                <!-- Criar os botoes para cor vermelha -->
+		<button id="111" class="led">Liga Led 11</button>
+		<button id="110" class="led">Desliga Led 11</button>
+                </p>
+
+		<!-- Criar os botoes para cor verde -->
+		<button id="121" class="led">Liga Led 12</button>
+		<button id="120" class="led">Desliga Led 12</button>
+                </p>
+
+		<!-- Criar os botoes para cor azul -->
+		<button id="131" class="led">Liga Led 13</button>
+		<button id="130" class="led">Desliga Led 13</button>
+                </p>
+
+
+
+ 	</center>
+
+<script>
+//Quando um botao da Classe led é clicado
+$( ".led" ).click(function() {
+        // grava o valor da id do pin11, pin12, ou pin13
+	var p = $(this).attr('id');
+
+	// Envia a requisição via GET para o endereço de IP com o parametro chamado "pin" e valor "p" para executar a função no arduino através do esp8266
+	$.get("http://192.168.0.108:8085/", {pin:p});
+
+
+});
+</script>
+
+</body>
+</html>
